@@ -2,9 +2,7 @@
   "parser": "babel-eslint",
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
     "prettier",
-    "prettier/react"
   ],
   "plugins": [
     "prettier",
@@ -13,7 +11,6 @@
   ],
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true,
       "experimentalObjectRestSpread": true,
     },
     "ecmaVersion": 2017,
@@ -37,7 +34,6 @@
         "singleQuote": true,
         "bracketSpacing": true,
         "trailingComma": "all",
-        "jsxBracketSameLine": false,
       },
     ],
     "eqeqeq": ["error", "always"], // adding some custom ESLint rules
@@ -45,6 +41,5 @@
     "object-curly-spacing": ["error", "always"], // good: const { a } = b; wrong: const {a} = b;
     "react/display-name": "off",
     "no-console": ["error", { "allow": ["error", "warn"] }],
-    "react/prop-types": ["error", { skipUndeclared: true }],
   },
 }

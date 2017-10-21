@@ -1,46 +1,41 @@
-import { fromJS, List } from 'immutable';
+import update from 'immutability-helper';
 
 export const domain = '@@Aurora';
 
-const initialState = fromJS({
+const initialState = {
   elements: [],
-});
+};
 
 export const actionTypes = {
-  ADD_ELEMENT: `${domain}/ADD_ELEMENT`,
-  REMOVE_ELEMENT: `${domain}/REMOVE_ELEMENT`,
+  SHOW_ELEMENT: `${domain}/SHOW_ELEMENT`,
+  HIDE_ELEMENT: `${domain}/HIDE_ELEMENT`,
 };
 
 export const actions = {
-  addElement: element => {
-    actionTypes.ADD_ELEMENT, element;
-  },
-  removeElement: id => {
-    actionTypes.REMOVE_ELEMENT, id;
-  },
+  showElement: element => ({ type: actionTypes.SHOW_ELEMENT, element }),
+  hideElement: id => ({ type: actionTypes.HIDE_ELEMENT, id }),
 };
 
 export function reducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.ADD_ELEMENT: {
-      let index = state
-        .get('elements')
-        .findIndex(e => e.get('id') === action.element.get('id'));
+    case actionTypes.SHOW_ELEMENT: {
+      let index = state.elements.findIndex(e => e.id === action.element.id);
       if (index === -1) {
-        index = state.get('elements').size;
+        index = state.elements.length;
       }
-      return state.setIn(['elements', index], action.element);
+      return update(state, { elements: { [index]: { $set: action.element } } });
     }
 
-    case actionTypes.REMOVE_ELEMENT:
-      return state.set(
-        'elements',
-        state.get('elements').filter(e => e.get('id') === action.id),
-      );
+    case actionTypes.HIDE_ELEMENT: {
+      return {
+        ...state,
+        elements: state.elements.filter(e => e.id !== action.id),
+      };
+    }
   }
   return state;
 }
 
 export const selectors = {
-  elements: state => state.get('elements', List()),
+  elements: state => state.elements,
 };

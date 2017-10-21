@@ -1,6 +1,6 @@
 {
   "name": "react-aurora-redux",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Redux helpers for react-aurora",
   "main": "./lib/react-aurora-redux.js",
   "scripts": {
@@ -24,27 +24,23 @@
     "url": "https://github.com/Monar/react-aurora-redux/issues"
   },
   "homepage": "https://github.com/Monar/react-aurora-redux#readme",
-  "peerDependencies": {
-    "immutable": "^3"
+  "dependencies": {
+    "immutability-helper": "2.4.0"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-eslint": "8.0.1",
     "babel-jest": "21.2.0",
     "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-preset-react": "6.24.1",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
     "eslint": "4.8.0",
     "eslint-config-prettier": "2.6.0",
     "eslint-plugin-class-property": "1.0.6",
     "eslint-plugin-import": "2.7.0",
-    "eslint-plugin-jsx-a11y": "6.0.2",
     "eslint-plugin-prettier": "2.3.1",
-    "eslint-plugin-react": "7.4.0",
-    "immutable": "3.8.2",
     "jest": "21.2.1",
     "jest-cli": "21.2.1",
     "prettier": "1.7.4",
-    "prop-types": "15.6.0",
     "rollup": "0.50.0",
     "rollup-plugin-babel": "3.0.2"
   },
@@ -62,11 +58,9 @@
     "testURL": "http://localhost"
   },
   "babel": {
-    "presets": [
-      "react"
-    ],
     "plugins": [
-      "transform-class-properties"
+      "transform-class-properties",
+      "transform-object-rest-spread"
     ]
   }
 }
