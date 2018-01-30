@@ -13,7 +13,10 @@ export const actionTypes = {
 
 export const actions = {
   showElement: element => ({ type: actionTypes.SHOW_ELEMENT, element }),
-  hideElement: id => ({ type: actionTypes.HIDE_ELEMENT, id }),
+  hideElement: ids => ({
+    type: actionTypes.HIDE_ELEMENT,
+    ids: Array.isArray(ids) ? ids : [ids],
+  }),
 };
 
 export function reducer(state = initialState, action) {
@@ -29,7 +32,7 @@ export function reducer(state = initialState, action) {
     case actionTypes.HIDE_ELEMENT: {
       return {
         ...state,
-        elements: state.elements.filter(e => e.id !== action.id),
+        elements: state.elements.filter(e => !action.ids.includes(e.id)),
       };
     }
   }
