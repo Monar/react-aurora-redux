@@ -1,6 +1,6 @@
 {
   "name": "react-aurora-redux",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Redux helpers for react-aurora",
   "main": "./lib/react-aurora-redux.js",
   "scripts": {
